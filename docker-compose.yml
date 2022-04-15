@@ -22,7 +22,7 @@ services:
         volumes:
             - '.:/var/www/html'
         networks:
-            - neoscrypts
+            - Raymondscrypts
             - nginx-proxy
         depends_on:
             - mysql
@@ -48,7 +48,7 @@ services:
             - '${HOME}/lib/letsencrypt:/var/lib/letsencrypt'
             - '${HOME}/letsencrypt:/etc/letsencrypt'
         networks:
-            - neoscrypts
+            - Raymondscrypts
             - nginx-proxy
         depends_on:
             - application
@@ -63,7 +63,7 @@ services:
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
         volumes:
-            - 'neoscrypts-mysql:/var/lib/mysql'
+            - 'Rayscrypts-mysql:/var/lib/mysql'
         networks:
             - neoscrypts
         cap_add:
@@ -90,9 +90,9 @@ services:
             POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
             PGPASSWORD: '${DB_PASSWORD:-secret}'
         volumes:
-            - 'neoscrypts-pgsql:/var/lib/postgresql/data'
+            - 'Rayscrypts-pgsql:/var/lib/postgresql/data'
         networks:
-            - neoscrypts
+            - rayscrypts
         healthcheck:
             test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
 networks:
